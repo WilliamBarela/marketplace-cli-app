@@ -7,3 +7,5 @@
 require "./lib/marketplace"
 
 puts "hello world!"
+page = Scraper.sashimi
+binding.pry
