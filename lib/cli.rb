@@ -1,9 +1,12 @@
 class Cli
   def pull_articles
-    # should scrape marketplace and create the articles
+    Article.create_from_collection(Scraper.scrape_home_page)
   end
 
   def add_articles_info
-    # should use the linkes provided in the Arists.all[i].link to to scrape paragraphs and audio_link
+    Article.all.each do |article|
+      hash = Scrape.scrape_article(article.link)
+      article.add_article_attributes(hash)
+    end
   end
 end
