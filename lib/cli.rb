@@ -1,14 +1,16 @@
 class Cli
 
   def run
-    self.start_message
+    self.clear
     self.pull_articles
     self.add_articles_info
+    self.start_message
     self.cli_loop
     self.exit_message
   end
 
   def pull_articles
+    puts "Loading articles for the day..."
     Article.create_from_collection(Scraper.scrape_home_page)
   end
 
@@ -40,7 +42,17 @@ class Cli
   end
 
   def list
+    self.clear
+    puts "Marketplace Top Stories of the Day\n\n".colorize(:white).on_blue.bold
 
+    self.articles.each_with_index do |article, i|
+      puts (i + 1).to_s.colorize(:blue).on_magenta.bold + " " + article.headline.colorize(:white).on_green.bold
+    end
+    puts "Please select an article to read"
+    # case input
+    # when condition
+    #
+    # end
   end
 
   def man
@@ -52,7 +64,7 @@ class Cli
   end
 
   def articles
-    @articles = Articles.all
+    @articles = Article.all
   end
 
   def clear
