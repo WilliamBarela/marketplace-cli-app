@@ -1,7 +1,9 @@
 class Cli
 
-  def self.run
-    # orders methods
+  def run
+    self.pull_articles
+    self.add_articles_info
+    self.cli_loop
   end
 
   def pull_articles
@@ -10,7 +12,7 @@ class Cli
 
   def add_articles_info
     Article.all.each do |article|
-      hash = Scrape.scrape_article(article.link)
+      hash = Scraper.scrape_article(article.link)
       article.add_article_attributes(hash)
     end
   end
