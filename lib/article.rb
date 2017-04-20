@@ -8,7 +8,7 @@ class Article
   end
 
   def self.create_from_collection(article_array)
-
+    article_array.each{|article_hash| Article.new(article_hash)}
   end
 
   def add_article_attributes(article_hash)
