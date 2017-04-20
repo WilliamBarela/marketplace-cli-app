@@ -50,10 +50,26 @@ class Cli
       puts "     |_--#{article.teaser}\n\n"
     end
     puts "\nPlease select an article to read"
-    # case input
-    # when condition
-    #
-    # end
+    second_input = gets.strip.downcase
+    case second_input
+      when /rl (\d+)/
+        self.clear
+        i = second_input.match(/rl (\d+)/)[1].to_i - 1
+        article = self.articles[i]
+        puts article.headline.colorize(:white).on_green.bold
+        article.paragraphs.each {|p| puts " #{p}\n\n"}
+        system(%Q[chrome --app="data:text/html,<html><body><script>window.moveTo(20,20);window.resizeTo(700,250);window.location='#{article.audio_link}';</script></body></html>"])
+        puts "\n\nPlease type #{'list'.colorize(:red)} to go back"
+      when /(l|listen) (\d+)/
+        #fill me out
+      when /(r|read) (\d+)/
+        #fill me out
+      else
+        puts "Please enter a valid command, eg: " + "read 4".colorize(:red) + ", " +
+             "listen 3".colorize(:red) + ", " +
+             "r 4".colorize(:red) + ", or "  +
+             "l 3".colorize(:red)
+    end
   end
 
   def man
