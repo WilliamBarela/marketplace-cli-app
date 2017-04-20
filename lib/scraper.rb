@@ -9,7 +9,7 @@ class Scraper
         hash[:authors] = article.css(".river-byline").css("a").collect{|author| author.text}
         hash[:date] = article.css(".river--time").text
         hash[:teaser] = article.css(".dek").text
-        hash[:link] = articles[2].css(".river--hed a").attr("href").value
+        hash[:link] = article.css(".river--hed a").attr("href").value
       end
     end
   end
