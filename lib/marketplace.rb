@@ -1,6 +1,7 @@
 require_relative "./marketplace/version"
 require_relative "./article"
 require_relative "./scraper"
+require_relative "./cli"
 
 require "pry"
 require "open-uri"
