@@ -9,9 +9,11 @@ require "./lib/marketplace"
 #puts "hello world!"
 #page = Scraper.sashimi
 # articles = Scraper.scrape_home_page
-page = Scraper.scrape_home_page
-river = page.css(".river-collection")
-articles = river.css(".feat-1")
-headlines = articles.css(".river--hed a")
-headlines.each{|headline| p headline.text}
+#page = Scraper.scrape_home_page #("https://www.youtube.com/results?search_query=los+hermanos")
+#river = page.css(".river-collection")
+#articles = river.css(".feat-1")
+#headlines = page.css(".river--hed a") #articles.css(".river--hed a")
+#headlines.each{|headline| p headline.text}
+
+
 binding.pry
