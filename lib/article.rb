@@ -3,15 +3,16 @@ class Article
   @@all = []
 
   def initialize(article_hash)
-
+    self.add_article_attributes(article_hash)
+    @@all << self
   end
 
   def self.create_from_collection(article_array)
 
   end
 
-  def add_article_attributes(attributes_hash)
-    attributes_hash.each{|key, value| self.send(("#{key}="),value)}
+  def add_article_attributes(article_hash)
+    article_hash.each{|key, value| self.send(("#{key}="),value)}
     self
   end
 
