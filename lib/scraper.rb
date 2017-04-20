@@ -9,7 +9,7 @@ class Scraper
         hash[:authors] = article.css(".river-byline").css("a").collect{|author| author.text}
         hash[:date] = article.css(".river--time").text
         hash[:teaser] = article.css(".dek").text
-        hash[:link] = article.css(".river--hed a").attr("href").value
+        hash[:link] = home_url.match(/(.*)\//)[1] + article.css(".river--hed a").attr("href").value
       end
     end
   end
@@ -18,8 +18,8 @@ class Scraper
     article_page = self.sashimi(article_url)
     article = article_page.css(".article-body")
     {}.tap do |hash|
-      hash[:paragraphs] = article.css("p").collect {|p| p.text}
-      hash[:audio_link] = article.css("#embed-field").first.text.match(/(https.*\/popout)/)[0]
+      hash[:paragraphs] = article.css("p").collect {|p| p.text}.reject{|s| s.empty?}
+      hash[:audio_link] = article.css("#embed-field").first.text.match(/(https.*\/popout)/)[1]
     end
   end
 

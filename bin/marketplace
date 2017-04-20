@@ -11,9 +11,22 @@ require "./lib/marketplace"
 # articles = Scraper.scrape_home_page
 #page = Scraper.scrape_home_page #("https://www.youtube.com/results?search_query=los+hermanos")
 #river = page.css(".river-collection")
-#articles = river.css(".feat-1")
+#articles = page.css(".river-collection .feat-1") #.river--hed a")
 #headlines = page.css(".river--hed a") #articles.css(".river--hed a")
-#headlines.each{|headline| p headline.text}
+#articles.each{|headline| p headline.text}
+
+#home_url="https://www.marketplace.org/"
+#page = Scraper.sashimi(home_url)
+#articles = page.css(".river-collection .feat-1")
+#authors = articles[2].css(".river-byline").css("a").collect{|author| author.text}
+#hl = articles[2].css(".river--hed a").text
+#teaser = articles[2].css(".dek").text
+#puts "This is the teaser: #{teaser}"
+#articles_hash = Scraper.scrape_home_page
+#text = Scraper.scrape_article
 
 
+Article.create_from_collection(Scraper.scrape_home_page)
+art1 = Scraper.scrape_article(Article.all.first.link)
+art1[:paragraphs].each{|p| puts "  #{p}\n"}
 binding.pry
