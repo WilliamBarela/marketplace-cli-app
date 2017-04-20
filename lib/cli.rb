@@ -43,12 +43,13 @@ class Cli
 
   def list
     self.clear
-    puts "Marketplace Top Stories of the Day\n\n".colorize(:white).on_blue.bold
+    puts "Marketplace Top Stories of the Day\n\n".colorize(:white).on_green.bold
 
     self.articles.each_with_index do |article, i|
-      puts (i + 1).to_s.colorize(:blue).on_magenta.bold + " " + article.headline.colorize(:white).on_green.bold
+      puts " #{(i + 1).to_s} ".colorize(:white).on_red.bold + " " + article.headline.colorize(:blue).bold
+      puts "     |_--#{article.teaser}\n\n"
     end
-    puts "Please select an article to read"
+    puts "\nPlease select an article to read"
     # case input
     # when condition
     #
