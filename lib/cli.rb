@@ -22,20 +22,32 @@ class Cli
   def cli_loop
     input = ""
     until input == "exit"
-      input = gets.strip
+      input = gets.strip.downcase
       case input
-      when "list"
-        self.list
-      when "exit"
-        self.clear
-      else
-        puts "Please type " + "man".colorize(:red) + " to see the list of commands"
+        when "list"
+          self.list
+        when "man"
+          self.man
+        when "about"
+          self.about
+        when "exit"
+          self.clear
+        else
+          puts "Please type " + "man".colorize(:red) + " to see the list of commands"
       end
     end
     # loops allowing users to make selections
   end
 
   def list
+
+  end
+
+  def man
+
+  end
+
+  def about
 
   end
 
