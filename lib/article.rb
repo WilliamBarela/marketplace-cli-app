@@ -1,5 +1,5 @@
 class Article
-  attr_accessor :headline, :authors, :date, :teaser, :link
+  attr_accessor :headline, :authors, :date, :teaser, :link, :paragraphs, :audio_link
   @@all = []
 
   def initialize(article_hash)
