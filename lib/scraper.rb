@@ -14,8 +14,12 @@ class Scraper
     end
   end
 
-  def self.scrape_article(article_url)
-
+  def self.scrape_article(article_url="https://www.marketplace.org/2017/04/18/business/how-charles-shaw-wine-became-two-buck-chuck")
+    article = self.sashimi(article_url)
+    text = article.css(".article-body")
+    # {}.tap do |hash|
+    #
+    # end
   end
 
   def self.sashimi(url)
