@@ -10,6 +10,6 @@ class Scraper
   end
 
   def self.sashimi(url="https://www.marketplace.org/")
-    Nokogiri::HTML(open(url))
+    Nokogiri::HTML(open(url).read, nil, 'utf-8')
   end
 end
