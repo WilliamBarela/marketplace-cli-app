@@ -4,6 +4,7 @@ class Cli
     self.pull_articles
     self.add_articles_info
     self.cli_loop
+    self.exit_message
   end
 
   def pull_articles
@@ -19,5 +20,9 @@ class Cli
 
   def cli_loop
     # loops allowing users to make selections
+  end
+
+  def exit_message
+    puts "Thank you for using this Gem and listening to Marketplace!"
   end
 end
