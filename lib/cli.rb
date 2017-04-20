@@ -27,7 +27,7 @@ class Cli
       when "list"
         self.list
       when "exit"
-        puts "\n"
+        self.clear
       else
         puts "Please type " + "man".colorize(:red) + " to see the list of commands"
       end
@@ -43,8 +43,12 @@ class Cli
     @articles = Articles.all
   end
 
-  def start_message
+  def clear
     system("clear")
+  end
+
+  def start_message
+    self.clear
     puts "Welcome to the Marketplace Gem!\n" \
          "Type " + "man".colorize(:red).bold + " for commands, " +
          "about".colorize(:blue).bold + " for info, and " +
