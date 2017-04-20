@@ -1,6 +1,7 @@
 class Cli
 
   def run
+    self.start_message
     self.pull_articles
     self.add_articles_info
     self.cli_loop
@@ -40,6 +41,14 @@ class Cli
 
   def articles
     @articles = Articles.all
+  end
+
+  def start_message
+    system("clear")
+    puts "Welcome to the Marketplace Gem!\n" \
+         "Type " + "man".colorize(:red).bold + " for commands, " +
+         "about".colorize(:blue).bold + " for info, and " +
+         "list".colorize(:green).bold + " for today's articles"
   end
 
   def exit_message
