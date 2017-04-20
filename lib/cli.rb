@@ -19,7 +19,27 @@ class Cli
   end
 
   def cli_loop
+    input = ""
+    until input == "exit"
+      input = gets.strip
+      case input
+      when "list"
+        self.list
+      when "exit"
+        puts "\n"
+      else
+        puts "Please type " + "man".colorize(:red) + " to see the list of commands"
+      end
+    end
     # loops allowing users to make selections
+  end
+
+  def list
+
+  end
+
+  def articles
+    @articles = Articles.all
   end
 
   def exit_message
