@@ -68,10 +68,9 @@ class Cli
           self.clear
           i = second_input.match(/rl (\d+)/)[1].to_i - 1
           article = self.articles[i]
-          puts article.headline.colorize(:white).on_green.bold
-          article.paragraphs.each {|p| puts " #{p}\n\n"}
-          system(%Q[chrome --app="data:text/html,<html><body><script>window.moveTo(20,20);window.resizeTo(700,250);window.location='#{article.audio_link}';</script></body></html>"])
-          puts "\n\nPlease type #{'list'.colorize(:red)} to go back"
+          read(article)
+          listen(article)
+          self.back_message
         when /(l|listen) (\d+)/
           #fill me out
         when /(r|read) (\d+)/
@@ -91,6 +90,19 @@ class Cli
                "l 3".colorize(:red)
       end
     end
+  end
+
+  def read(article)
+    puts article.headline.colorize(:white).on_green.bold
+    article.paragraphs.each {|p| puts " #{p}\n\n"}
+  end
+
+  def listen(article)
+    system(%Q[chrome --app="data:text/html,<html><body><script>window.moveTo(20,20);window.resizeTo(700,250);window.location='#{article.audio_link}';</script></body></html>"])
+  end
+
+  def back_message
+    puts "\n\nPlease type #{'list'.colorize(:red)} to go back"
   end
 
   def man
