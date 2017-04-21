@@ -4,9 +4,8 @@ class Cli
     self.clear
     self.pull_articles
     self.add_articles_info
-    self.start_message
     self.cli_loop
-    self.exit_message
+    #self.exit_message
   end
 
   def pull_articles
@@ -22,8 +21,9 @@ class Cli
   end
 
   def cli_loop
+    self.start_message
     input = ""
-    until input == "exit"
+    until input == "exit" || input == "list"
       input = gets.strip.downcase
       case input
         when "list"
@@ -34,6 +34,7 @@ class Cli
           self.about
         when "exit"
           self.clear
+          #input = "exit"
           self.exit_message
         else
           puts "Please type " + "man".colorize(:red) + " to see the list of commands"
@@ -61,7 +62,7 @@ class Cli
 
   def select_article
     second_input = ""
-    until second_input == "exit"
+    until second_input == "exit" || second_input == "back"
       second_input = gets.strip.downcase
       case second_input
         when /rl (\d+)/
@@ -88,8 +89,13 @@ class Cli
           puts "\nPlease select an article to read"
         when "exit"
           self.clear
+          #second_input = "exit"
           self.exit_message
-          input = exit
+          #input = exit
+        when "back"
+          self.clear
+          #second_input = "back"
+          self.cli_loop
         else
           self.display_index_page
           puts "Please enter a valid command, eg: " + "read 4".colorize(:red) + ", " +
@@ -115,12 +121,14 @@ class Cli
 
   def man
     self.clear
-    puts "this is the man"
+    self.start_message
+    puts "\n\nthis is the man"
   end
 
   def about
     self.clear
-    puts "Welcome to the Marketplace CLI Gem."
+    self.start_message
+    puts "\n\nWelcome to the Marketplace CLI Gem."
     puts "Here you can listen to and read the latest articles from Marketplace"
     puts "Programmed by: William Barela"
   end
