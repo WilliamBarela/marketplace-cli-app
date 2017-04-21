@@ -34,6 +34,7 @@ class Cli
           self.about
         when "exit"
           self.clear
+          self.exit_message
         else
           puts "Please type " + "man".colorize(:red) + " to see the list of commands"
       end
@@ -44,7 +45,21 @@ class Cli
   def list
     self.display_index_page
     puts "\nPlease select an article to read"
+    self.select_article
+  end
 
+  def display_index_page
+    self.clear
+    puts "Marketplace Top Stories of the Day\n\n".colorize(:white).on_green.bold
+
+    self.articles.each_with_index do |article, i|
+      puts " #{(i + 1).to_s} ".colorize(:white).on_red.bold + " " + article.headline.colorize(:blue).bold
+      puts "     |_--#{article.teaser}"
+      puts "     |_--#{"READ".colorize(:white).on_yellow.bold} #{(article.audio_link != nil) ? "LISTEN".colorize(:white).on_magenta.bold : ""}\n\n"
+    end
+  end
+
+  def select_article
     second_input = ""
     until second_input == "exit"
       second_input = gets.strip.downcase
@@ -63,6 +78,7 @@ class Cli
           #fill me out
         when "list"
           self.display_index_page
+          puts "\nPlease select an article to read"
         when "exit"
           self.clear
           self.exit_message
@@ -74,17 +90,6 @@ class Cli
                "r 4".colorize(:red) + ", or "  +
                "l 3".colorize(:red)
       end
-    end
-  end
-
-  def display_index_page
-    self.clear
-    puts "Marketplace Top Stories of the Day\n\n".colorize(:white).on_green.bold
-
-    self.articles.each_with_index do |article, i|
-      puts " #{(i + 1).to_s} ".colorize(:white).on_red.bold + " " + article.headline.colorize(:blue).bold
-      puts "     |_--#{article.teaser}"
-      puts "     |_--#{"READ".colorize(:white).on_yellow.bold} #{(article.audio_link != nil) ? "LISTEN".colorize(:white).on_magenta.bold : ""}\n\n"
     end
   end
 
