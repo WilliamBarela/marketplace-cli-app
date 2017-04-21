@@ -34,7 +34,6 @@ class Cli
           self.about
         when "exit"
           self.clear
-          #input = "exit"
           self.exit_message
         else
           puts "Please type " + "man".colorize(:red) + " to see the list of commands"
@@ -61,26 +60,26 @@ class Cli
   end
 
   def select_article
-    second_input = ""
-    until second_input == "exit" || second_input == "back"
-      second_input = gets.strip.downcase
-      case second_input
+    command = ""
+    until command == "exit" || command == "back"
+      command = gets.strip.downcase
+      case command
         when /rl (\d+)/
           self.clear
-          i = second_input.match(/rl (\d+)/)[1].to_i - 1
+          i = command.match(/rl (\d+)/)[1].to_i - 1
           article = self.articles[i]
           self.read(article)
           self.listen(article)
           self.back_message
         when /(l|listen) (\d+)/
           self.clear
-          i = second_input.match(/(l|listen) (\d+)/)[1].to_i - 1
+          i = command.match(/(l|listen) (\d+)/)[1].to_i - 1
           article = self.articles[i]
           self.listen(article)
           self.back_message
         when /(r|read) (\d+)/
           self.clear
-          i = second_input.match(/(r|read) (\d+)/)[1].to_i - 1
+          i = command.match(/(r|read) (\d+)/)[1].to_i - 1
           article = self.articles[i]
           self.read(article)
           self.back_message
@@ -89,12 +88,9 @@ class Cli
           puts "\nPlease select an article to read"
         when "exit"
           self.clear
-          #second_input = "exit"
           self.exit_message
-          #input = exit
         when "back"
           self.clear
-          #second_input = "back"
           self.cli_loop
         else
           self.display_index_page
