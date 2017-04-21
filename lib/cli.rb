@@ -68,11 +68,15 @@ class Cli
           self.clear
           i = second_input.match(/rl (\d+)/)[1].to_i - 1
           article = self.articles[i]
-          read(article)
-          listen(article)
+          self.read(article)
+          self.listen(article)
           self.back_message
         when /(l|listen) (\d+)/
-          #fill me out
+          self.clear
+          i = second_input.match(/(l|listen) (\d+)/)[1].to_i - 1
+          article = self.articles[i]
+          self.listen(article)
+          self.back_message
         when /(r|read) (\d+)/
           #fill me out
         when "list"
