@@ -71,10 +71,7 @@ class Cli
           self.listen(article)
           self.back_message
         when /(l|listen) (\d+)/
-          i = command.match(/(l|listen) (\d+)/)[2].to_i - 1
-          article = self.articles[i]
-          self.listen(article)
-          self.back_message
+          self.listen_select_article(command)
         when /(r|read) (\d+)/
           self.select_read_article(command)
         when "list"
@@ -101,16 +98,33 @@ class Cli
       self.read(article)
       self.back_message
     else
-      puts "Invalid article chosen! No such article exists. Please choose another"
+      self.invalid_selection
     end
   end
 
   def listen_select_article(command)
-
+    option = command.match(/(l|listen) (\d+)/)[2]
+    i = option.to_i - 1
+    if Article.audible.include?(i)
+      article = self.articles[i]
+      self.listen(article)
+      self.back_message
+    elsif Article.readable.include?(i)
+      self.display_index_page
+      puts "Unfortunately article #{" #{option} ".colorize(:white).on_red.bold} does not contain audio"
+      puts "Please select another article to listen to, or read this one!"
+    else
+      self.invalid_selection
+    end
   end
 
   def read_listen_select_article(command)
 
+  end
+
+  def invalid_selection
+    self.display_index_page
+    puts "\nInvalid article chosen! No such article exists. Please choose another".colorize(:blue).on_yellow.bold
   end
 
   def read(article)
