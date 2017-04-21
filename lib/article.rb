@@ -17,7 +17,7 @@ class Article
   end
 
   def self.readable
-    @@all.collect.with_index{|article, i| i + 1}
+    @@all.collect.with_index{|article, i| i}
   end
 
   def self.audible
