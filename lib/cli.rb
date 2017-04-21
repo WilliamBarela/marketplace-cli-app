@@ -78,7 +78,11 @@ class Cli
           self.listen(article)
           self.back_message
         when /(r|read) (\d+)/
-          #fill me out
+          self.clear
+          i = second_input.match(/(r|read) (\d+)/)[1].to_i - 1
+          article = self.articles[i]
+          self.read(article)
+          self.back_message
         when "list"
           self.display_index_page
           puts "\nPlease select an article to read"
