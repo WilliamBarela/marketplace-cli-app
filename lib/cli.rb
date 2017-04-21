@@ -65,21 +65,18 @@ class Cli
       self.clear
       case command
         when /rl (\d+)/
-          i = command.match(/rl (\d+)/)[1].to_i - 1
+          i = command.match(/rl (\d+)/)[2].to_i - 1
           article = self.articles[i]
           self.read(article)
           self.listen(article)
           self.back_message
         when /(l|listen) (\d+)/
-          i = command.match(/(l|listen) (\d+)/)[1].to_i - 1
+          i = command.match(/(l|listen) (\d+)/)[2].to_i - 1
           article = self.articles[i]
           self.listen(article)
           self.back_message
         when /(r|read) (\d+)/
-          i = command.match(/(r|read) (\d+)/)[1].to_i - 1
-          article = self.articles[i]
-          self.read(article)
-          self.back_message
+          self.select_read_article(command)
         when "list"
           self.display_index_page
           puts "\nPlease select an article to read"
@@ -95,6 +92,25 @@ class Cli
                "l 3".colorize(:red)
       end
     end
+  end
+
+  def select_read_article(command)
+    i = command.match(/(r|read) (\d+)/)[2].to_i - 1
+    if Article.readable.include?(i)
+      article = self.articles[i]
+      self.read(article)
+      self.back_message
+    else
+      puts "Invalid article chosen! No such article exists. Please choose another"
+    end
+  end
+
+  def listen_select_article(command)
+
+  end
+
+  def read_listen_select_article(command)
+
   end
 
   def read(article)
