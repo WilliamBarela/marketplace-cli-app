@@ -19,7 +19,12 @@ class Scraper
     article = article_page.css(".article-body")
     {}.tap do |hash|
       hash[:paragraphs] = article.css("p").collect {|p| p.text}.reject{|s| s.empty?}
-      hash[:audio_link] = article.css("#embed-field").first.text.match(/(https.*\/popout)/)[1]
+      # saves :audio_link as nil if there is no link
+      if article.css("#embed-field").first != nil
+        hash[:audio_link] = article.css("#embed-field").first.text.match(/(https.*\/popout)/)[1]
+      else
+        hash[:audio_link] = nil
+      end
     end
   end
 
