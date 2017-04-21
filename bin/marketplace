@@ -7,4 +7,4 @@
 require "./lib/marketplace"
 
 Cli.new.run
-binding.pry
+#binding.pry

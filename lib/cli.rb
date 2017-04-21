@@ -5,7 +5,6 @@ class Cli
     self.pull_articles
     self.add_articles_info
     self.cli_loop
-    #self.exit_message
   end
 
   def pull_articles
@@ -52,9 +51,9 @@ class Cli
     puts "Marketplace Top Stories of the Day\n\n".colorize(:white).on_green.bold
 
     self.articles.each_with_index do |article, i|
-      puts " #{(i + 1).to_s} ".colorize(:white).on_red.bold + " " + article.headline.colorize(:blue).bold
+      puts " #{(i + 1).to_s} ".colorize(:white).on_red.bold + " " + article.headline.colorize(:magenta).bold
       puts "     |_--#{article.teaser}"
-      puts "     |_--#{"READ".colorize(:white).on_yellow.bold} #{(article.audio_link != nil) ? "LISTEN".colorize(:white).on_magenta.bold : ""}\n\n"
+      puts "     |_--#{" READ ".colorize(:black).on_white} #{(article.audio_link != nil) ? " LISTEN ".colorize(:white).on_cyan.bold : ""}\n\n"
     end
   end
 
@@ -81,8 +80,9 @@ class Cli
           self.display_index_page
           puts "Please enter a valid command, eg: " + "read 4".colorize(:red) + ", " +
                "listen 3".colorize(:red) + ", " +
-               "r 4".colorize(:red) + ", or "  +
-               "l 3".colorize(:red)
+               "r 4".colorize(:red) + ", " +
+               "l 3".colorize(:red) + ", or "  +
+               "rl 7".colorize(:red)
       end
     end
   end
@@ -135,6 +135,8 @@ class Cli
 
   def read(article)
     puts article.headline.colorize(:white).on_green.bold
+    puts "Author(s): " + article.authors.join(", ")
+    puts "Date: " + article.date + "\n\n"
     article.paragraphs.each {|p| puts " #{p}\n\n"}
   end
 
@@ -148,7 +150,14 @@ class Cli
 
   def man
     self.start_message
-    puts "\n\nthis is the man"
+    puts "\n\nWelcome to the Manual of Marketplace\n\n"
+    puts "After typing " + " list ".colorize(:white).on_green.bold + ":\n\n"
+    puts "   " + " read 2 ".colorize(:black).on_white.bold + " opens the second article to read\n\n"
+    puts "   " + " r 2 ".colorize(:black).on_white.bold + " opens the second article to read (SHORTCUT)\n\n"
+    puts "   " + " listen 5 ".colorize(:white).on_cyan.bold + " opens the fifth article to listen to\n\n"
+    puts "   " + " l 5 ".colorize(:white).on_cyan.bold + " opens the fifth article to listen to (SHORTCUT)\n\n"
+    puts "   " + " rl 9 ".colorize(:white).on_blue.bold + " opens the ninth article to read AND listen to\n\n"
+    puts "   " + " exit ".colorize(:white).on_red.bold + " to terminate the program\n\n"
   end
 
   def about
