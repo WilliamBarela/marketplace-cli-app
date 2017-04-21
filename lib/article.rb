@@ -16,6 +16,10 @@ class Article
     self
   end
 
+  def self.audible
+    @@all.collect.with_index{|article, i| i if article.audio_link != nil}.compact
+  end
+
   def self.all
     @@all
   end
