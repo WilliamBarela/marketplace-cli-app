@@ -65,11 +65,7 @@ class Cli
       self.clear
       case command
         when /rl (\d+)/
-          i = command.match(/rl (\d+)/)[2].to_i - 1
-          article = self.articles[i]
-          self.read(article)
-          self.listen(article)
-          self.back_message
+          self.read_listen_select_article(command)
         when /(l|listen) (\d+)/
           self.listen_select_article(command)
         when /(r|read) (\d+)/
@@ -119,7 +115,17 @@ class Cli
   end
 
   def read_listen_select_article(command)
-
+    option = command.match(/rl (\d+)/)[1]
+    i = option.to_i - 1
+    if Article.audible.include?(i) && Article.readable.include?(i)
+      article = self.articles[i]
+      self.read(article)
+      self.listen(article)
+      self.back_message
+    else
+      listen_command = "l #{option}"
+      listen_select_article(listen_command)
+    end
   end
 
   def invalid_selection
