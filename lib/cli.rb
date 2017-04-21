@@ -61,6 +61,12 @@ class Cli
           #fill me out
         when /(r|read) (\d+)/
           #fill me out
+        when "list"
+          self.display_index_page
+        when "exit"
+          self.clear
+          self.exit_message
+          input = exit
         else
           self.display_index_page
           puts "Please enter a valid command, eg: " + "read 4".colorize(:red) + ", " +
@@ -83,11 +89,15 @@ class Cli
   end
 
   def man
+    self.clear
     puts "this is the man"
   end
 
   def about
-
+    self.clear
+    puts "Welcome to the Marketplace CLI Gem."
+    puts "Here you can listen to and read the latest articles from Marketplace"
+    puts "Programmed by: William Barela"
   end
 
   def articles
