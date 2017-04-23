@@ -1,8 +1,8 @@
 # Marketplace
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/marketplace`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to the marketplace-cli-app gem! 
 
-TODO: Delete this and the text above, and describe your gem
+Just type ./bin/marketplace to begin to get all of the latest stories and audio
 
 ## Installation
 
