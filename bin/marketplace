@@ -1,10 +1,9 @@
-#!/home/crce/.rvm/rubies/ruby-2.3.0/bin/ruby
+#!/usr/bin/ruby
 #!/c/Ruby23-x64/bin/ruby
 
-# The first of the two bash shebangs will allow you to run on Windows using Cygwin bash
-# The second of the two bash shebangs will allow you to run this on Linux or Mac.
+# The second of the two bash shebangs will allow you to run on Windows using Cygwin bash
+# The first of the two bash shebangs will allow you to run this on Linux or Mac.
 
 require "./lib/marketplace"
-
 Cli.new.run
-#binding.pry
+
