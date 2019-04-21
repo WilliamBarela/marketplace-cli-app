@@ -6,7 +6,7 @@ require_relative "./cli"
 require "pry"
 require "open-uri"
 require "nokogiri"
-require "net_http_ssl_fix" #necessary only for Windows because of https problem in RUby
+# require "net_http_ssl_fix" #necessary only for Windows because of https problem in Ruby
 require "colorize"
 
 #require_relative "./marketplace/cli"
