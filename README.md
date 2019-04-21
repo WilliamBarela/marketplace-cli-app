@@ -2,37 +2,29 @@
 
 Welcome to the marketplace-cli-app gem! 
 
-Just type ./bin/marketplace to begin to get all of the latest stories and audio
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Excute bundle to pull down necessary libararies (assuming you have a valid installation of Ruby)
 
-```ruby
-gem 'marketplace'
+```bash
+bundle
 ```
 
-And then execute:
+Then, give run permissions to ./bin/marketplace and run it to get all of the latest stories and audio
 
-    $ bundle
+```bash
+# give execute permissions to ./bin/marketplace
+sudo chmod +x ./bin/marketplace
 
-Or install it yourself as:
+# run marketplace
+./bin/marketplace
+```
 
-    $ gem install marketplace
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/marketplace. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/williambarela/marketplace. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
