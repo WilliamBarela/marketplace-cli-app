@@ -141,7 +141,7 @@ class Cli
   end
 
   def listen(article)
-    system(%Q[chrome --app="data:text/html,<html><body><script>window.moveTo(20,20);window.resizeTo(700,250);window.location='#{article.audio_link}';</script></body></html>"])
+    system(%Q[google-chrome --disable-gpu --disable-software-rasterizer --app="data:text/html,<html><body><script>window.moveTo(20,20);window.resizeTo(700,250);window.location='#{article.audio_link}';</script></body></html>"])
   end
 
   def back_message
