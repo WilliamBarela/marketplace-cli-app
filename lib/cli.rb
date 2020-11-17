@@ -141,7 +141,9 @@ class Cli
   end
 
   def listen(article)
-    system(%Q[google-chrome --disable-gpu --disable-software-rasterizer --app="data:text/html,<html><body><script>window.moveTo(20,20);window.resizeTo(700,250);window.location='#{article.audio_link}';</script></body></html>"])
+    # FIXME: due to a change in the code base of marketplace, this method may no longer work. Fix scrapper and revisit
+    # system(%Q[google-chrome --disable-gpu --disable-software-rasterizer --app="data:text/html,<html><body><script>window.moveTo(20,20);window.resizeTo(700,250);window.location='#{article.audio_link}';</script></body></html>"])
+    # system(%Q[google-chrome --app="data:text/html,<html><body><script>window.moveTo(20,20);window.resizeTo(700,250);window.location='#{article.audio_link}';</script></body></html> &"])
   end
 
   def back_message
