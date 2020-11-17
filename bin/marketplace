@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 #!/c/Ruby23-x64/bin/ruby
 
 # The second of the two bash shebangs will allow you to run on Windows using Cygwin bash
